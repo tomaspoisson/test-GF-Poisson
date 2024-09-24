@@ -1,6 +1,6 @@
 ---
 title: "Proyecto Gestión Financiera"
-author: "Julio Tejero"
+author: "Tomás Poisson"
 format: html
 editor: visual
 bibliography: references.bib
@@ -23,27 +23,15 @@ library(tidyquant)
 
 Fecha de entrega límite: Miércoles 25 de Septiembre 23:59.
 
-### Definición
+### Sector/Temática
 
-El activo elegido fue Enel Chile S.A. La compañía es una extensión de Enel, empresa italiana. Se dedica a generación, distribución y transformación de energía a lo largo de todo el país.
+El sector de ropa y calzado deportivo abarca todo lo relacionado con la producción y venta de productos diseñados para el área deportiva y del ocio, cuya demanda se ha incrementado a causa del aumento de una cultura de hábito deportivo y saludable a nivel mundial. 
 
-Enel Chile se formó a partir de una reestructuración que comenzó en el año 2015, en ese entonces la empresa se llamaba Enersis Américas. En esta reestructuración, se aprobó la fusión de las compañías Enersis Chile, Endesa Chile y Chilectra en una estrategia denominada "La Fusión". En este mismo proceso se procedió al cambio de nombre a la hoy conocida Enel Chile S.A.
+On es una marca originaria de Suiza, con sede en Zurich, que pertenece a dicho sector perteneciente a dicho sector. Cuyas acciones se denominan como **ON Holding AG (ONON)**.
 
-Enel Chile es la mayor suministradora de energía del país, debido a esto en relevante exponer los datos nacionales de uso de electricidad. En el paper "Consumption-based carbon emissions, renewable energy consumption, financial development and economic growth in Chile" de @kirikkaleli2021 se expone un análisis descriptivo de los consumos nacionales de electricidad, el cual se presenta a continuación:
+ON es una marca perteneciente al sector de ropa y calzado deportivo originaria de Suiza con sede en Zurich. Compañía caracterizada por la innovación continua en los materiales y tecnologías para mejorar la calidad, rendimiento  y personalización en sus productos, comprometiéndose  a su vez con la sostenibilidad con sus prácticas responsables en sus diseños.
 
-[![Tabla 2 en](Data/Screenshot%202023-09-28%20at%2015.51.18.png){fig-align="center"}](https://doi.org/10.1002/bse.2945)
-
-En donde:
-
--   CCO2: Emisiones de carbonos basadas en el consumo de energía medida en millones de toneladas de CO2.
-
--   GDP: Crecimiento de la economía medido en el PIB per cápita.
-
--   ELE: Consumo eléctrico medido en Kw/h.
-
--   REN: COnsumo de energía renovables medido en Tw/h.
-
--   FD: Crecimiento financiero, medida amplia para el desarrollo financiero teniendo en cuenta su eficiencia, accesibilidad y profundidad.
+En cuanto al mercado del sector, es altamente competitivo por diversas razones. En primer lugar, existen numerosas marcas involucradas en dicho mercado con el mismo interés de capturar al mercado a través de medidas innovadoras y sostenibles. En segundo lugar, el comercio electrónico y la personalización siguen en auge, sumados a la tendencia de la cultura hábitos que incentiven el bienestar y la salud.
 
 ```{r ETL}
 #| echo: false
@@ -59,8 +47,6 @@ AESANDES <- tq_get("AESANDES.SN", get = "stock.prices", from = "2017-01-01", to 
 ECL <- tq_get("ECL.SN", get = "stock.prices", from = "2017-01-01", to = end)
 CL <- rbind(ENELCHILE,ENELAM,AESANDES,ECL)
 ```
-
-Por otro lado, también es de suma importancia tener en consideración los precios históricos del activo ENELCHILE, el cual actualmente tiene un valor promedio para el intervalo de años 2017-presente igual a `r round(mean(ENELCHILE$close),digits=0)`. A continuación se presentan dos gráficos que muestran estos datos históricos:
 
 ```{r ENELCHILEline}
 #| echo: false
@@ -83,19 +69,52 @@ ENELCHILE %>%
 
 ### Motivación
 
-Se escogió este activo en particular debido al compromiso con el medio ambiente y a indicadores ASG (Ambiental, Social y Gobernanza), alguno de sus objetivos son:
+Existen diversas razones por las que estudiar el sector de ropa y calzado deportivo, tales como:
 
-Alcanzar un 80% de energía renovable en su matriz de generación para 2024, reducir las emisiones de gases de efecto invernadero en un 40% para 2025 y aumentar la eficiencia energética en un 20% para 2030.
+**Creciente Conciencia de Salud y Bienestar:**
 
-Como menciona el Diario Financiero (DF) Enel Chile sostiene una estrategia de sostenibilidad para llegar a ser una empresa carbono neutral al año 2040. Para lograr este objetivo, Enel destinará US\$1.700 millones a temas ASG, los que principalmente se gastarán en la construcción de nuevas plantas de energías renovables.
+En las últimas décadas, el interés por participar en actividades deportivas ha experimentado un repentino crecimiento paralelo al interés por llevar una vida sana y en forma. Tal como lo afirma un informe de Grand View Research, el cual afirma que se ha disparado y seguirá al alza la demanda de ropa y calzado deportivos. Por tanto, ha hecho de este sector un campo de estudio relevante. \
+\
 
-Asimismo, varios documentos de la WOS (Web of Science) sustentan la iniciativa medioambiental de Enel Chile, principalmente con tarifas variables que logren cambiar los hábitos de uso de energía, homeostaticidad energética, entre otros.
+**Innovación en Productos:**
 
-Todos estos puntos fomentan el interés especifico sobre este activo por sobre los demás activos energéticos incluidos en el IPSA.
+En su mayoría, las marcas del sector de ropa y calzado deportivo están en constante innovación, como es el caso de ON. Y el estudiar y analizar si estas innovaciones para mejorar el rendimiento y la comodidad en el calzado, impactan de alguna u otra forma en la mentalidad de los consumidores para la adquisición de productos podría aportar bastante acerca de las tendencias del mercado.\
+\
+
+**Sostenibilidad:**
+
+Existe una preocupación a nivel global con respecto a la sostenibilidad, que provoca de alguna manera una presión sobre las empresas para adaptarse o empezar a adoptar prácticas de esta índole. Y puesto que es un hecho que la sostenibilidad está en aumento y para quedarse en el mercado, el analizar cómo las marcas de este sector responden frente a estas tendencias sociales sería un gran tema de interés en el mercado.
+
+**Salto en la bolsa tras su nuevo accionista Roger Federer:\
+**Desde el año 2019 cuentan con el ex tenista Roger Federer como uno de sus accionistas o poseedor del 25% de sus acciones. Tan así fue el impacto del suizo que previo al lanzamiento de sus sneakers personalizados, anticiparon un levantamiento de 600 millones de USD, siendo un gran salto en la bolsa. Siendo este un contexto de estudio de la acción ONON en el mercado, pues el hecho de contar con figuras reconocidas a nivel mundial y la entrada a la bolsa puede tener estrecha relación con la atracción que generó en el corto plazo.
+
+“Interés a lo largo del tiempo de ON Company 2019-2024”(Gráfico 2.1,  Google Trends)![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfp3nJuud5I202oAmqsRqnJbNw5PCEYJSXJHbUwullYeeH8Yi70Vcx6xkKnq_TBTdAn0cbF-o-By9aUz0-PtK-_-JboCAOmwkYrkOcX9rOEumRdgFSEbRj2EiEs1GxjU4FC0DV6xpGEByX-JCO5galF4uf_?key=U2yfz5JcYdX7InitdxuKLw)
 
 ### Contexto
 
-El IPSA tiene 4 componentes de la industria de energía, Enel Chile S.A, Enel Latinoamerica S.A, Engie Energia Chile S.A y AES Gener SA. Los primeros 2 corresponden a la empresa italiana Enel. A continuación se presentan los precios históricos de cada una de estas acciones:
+**Descripción de los Activos No Derivados**:
+
+-   El precio de la acción **So=19.71** USD**.** Indicando que ese fue el precio de cierre anterior y valoración reciente de **ONON**.
+
+-   El precio de ejercicio, más conocido como strike, vendría siendo 25 USD. Que sería el precio al que se puede ejercer la acción de compra. Nótese que **So** se encuentra por debajo de este, por ende la opción de **ONON** está fuera del dinero actualmente.
+
+-   El precio más alto al que los compradores están dispuestos a pagar es denominado como bid price con un valor de 24 USD, indicando un buen interés en la acción al ser mayor que el precio actual.
+
+-   El ask price es el precio más bajo el cual los vendedores están dispuestos a aceptar por la acción con un valor de 25.55 USD.
+
+-   El volumen de los contratos de opciones en el período específico de 5 años es de un total de 10 , mientras que la cantidad de contratos de opciones abiertos y que no hayan cerrado es de 20.![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdJzTXkV4pUDYOFisFcfNH5nMqh7BCDT3Mpwsp86Ej9v3eZVFQZFMAzEkmn7zCM3uODlAbKj3ZXJ6YCmaerF1E2qMj_CKY-oviOjc5HoVPng6ExRR25VMMV6iQfLU8EIwTtUsHt1AS6go3l-IWWzoC4jtnF?key=U2yfz5JcYdX7InitdxuKLw)
+
+-   El retorno del bono vendría siendo **=1.**
+
+-   El estado bueno, más conocido como upper, del retorno de la acción es **uSo=29.565 .**
+
+-   El estado malo, más conocido como down, del retorno de la acción **dSo=9.855 .**
+
+**Matriz W**
+
+Los valores dados a conocer en la sección anterior se pueden representar a través de la matriz W, que muestra la relación entre precios y retornos de los activos.
+
+(Imagen 3.1, elaboración propia)
 
 ```{r context}
 #| warning: false
@@ -113,14 +132,6 @@ CL %>%
     facet_wrap(~ symbol, ncol = 2, scale = "free_y") +
     theme_tq()
 ```
-
-Si bien los montos de los precios dependen de otros factores, tales como la cantidad de acciones que componen la compañía, si se observan tendencias entre estas. La más clara es que ambas empresas de Enel siguen un mismo patrón de precios, lo que hace sentido ya que pertenecen al mismo grupo. Lo que también se aprecia, es que cuando el precio de Enel aumenta, tanto de Engie Energia Chile S.A como el de AES Gener SA disminuye. Esto se puede deber a que la variación en la participación que tiene en la industria cada uno de estas influye inversamente en la otra (a mayor participación de Enel Chile, menor será la de el resto de los suministradores nacionales).
-
-También es interesante ver las rentabilidades que ha tenido el activo elegido:
-
-![](Data/Screenshot%202023-09-28%20at%2017.57.54.png){fig-align="center" width="144"}
-
-A partir de esto se puede ver que Enel Chile ha tenido un crecimiento en la mayoría de los años, aunque se puede apreciar una baja de casi un 50% en el año 2021 debido a la pandemia de Covid-19. Cabe destacar que según analistas de Yahoo Finance, Enel Chile tendrá un crecimiento estimado cercano al 65,80%.
 
 ### Modelo Binomial
 
@@ -156,80 +167,138 @@ $$
 V = \frac{C_u\cdot P + C_d\cdot (1-P)}{1+r}
 $$
 
-```{r}
-binomial_model <- function(cu, p, cd, rf) {
-  return((cu*p + cd*(1-p))/(1+rf))
-} 
+```{# Importar las librerías necesarias}
+import numpy as np
+import pandas as pd
 
-S <- tail(ENELCHILE$close,1)  # Precio actual del activo subyacente
-K <- 38  # Precio de ejercicio de la opción
-T <- 1  # Tiempo hasta la expiración (en años)
-r <- 0.0642 # Tasa de interés libre de riesgo
-u <- 1.1  # Factor de crecimiento en un paso hacia arriba
-d <- 0.9  # Factor de crecimiento en un paso hacia abajo
+# Parámetros
+S0 = 19.71  # Precio actual de la acción
+K = 25.00   # Precio de ejercicio
+u = 1.5     # Retorno en el estado bueno
+d = 0.5     # Retorno en el estado malo
+r = 1.01    # Tasa libre de riesgo
+T = 1       # Tiempo hasta el vencimiento en años (1 año)
+n = 2       # Número de periodos
 
-Su <- S*u
-Sd <- S*d
-p <- (1+r-d)/((1+r)*(u-d))
+# Calcular el tamaño del paso de tiempo
+dt = T / n
 
-cu <- max(Su - K, 0)
-cd <- max(Sd - K, 0)
+# Probabilidades del modelo binomial
+p = (np.exp(r * dt) - d) / (u - d)
 
+# Inicializar el árbol de precios
+price_tree = np.zeros((n + 1, n + 1))
 
-print(paste("El precio de la opción con el Modelo Binomial es ", binomial_model(cu, p, cd, r)))
+# Calcular los precios en el árbol binomial
+for i in range(n + 1):
+    for j in range(i + 1):
+        price_tree[j, i] = S0 * (u ** (i - j)) * (d ** j)
+
+# Crear un DataFrame para visualizar el árbol de precios
+price_df = pd.DataFrame(price_tree)
+price_df.columns = [f"Paso {i}" for i in range(n + 1)]
+price_df.index = [f"Nodo {j}" for j in range(n + 1)]
+print("Árbol de precios de la acción:")
+print(price_df)
+
+# Calcular los retornos de la opción en el último paso
+option_values = np.maximum(0, price_tree[:, n] - K)
+
+# Descontar los valores hacia atrás en el árbol
+for i in range(n - 1, -1, -1):
+    for j in range(i + 1):
+        option_values[j] = np.exp(-r * dt) * (p * option_values[j] + (1 - p) * option_values[j + 1])
+
+# Valor de la opción en el nodo inicial
+option_price = option_values[0]
+print(f"\nEl valor de la opción de compra es: {option_price:.2f} USD")
+
 
 ```
 
 ### Modelo Black and Scholes (BS)
 
-```{r}
-black_scholes <- function(S, K, t, r, sigma) {
-    d1 <- (log(S/K) + (r + 0.5 * sigma^2) * t) / (sigma * sqrt(t))
-    d2 <- d1 - sigma * sqrt(t)
-    N_d1 <- pnorm(d1)
-    N_d2 <- pnorm(d2)
-    precio_call <- S * N_d1 - K * exp(-r * t) * N_d2
-    return(precio_call)
-  }
-  
-rendimientos <- diff(log(ENELCHILE$close))
-sigma<-sd(rendimientos[2:length(rendimientos)])
-volatilidad<-var(rendimientos[2:length(rendimientos)])
+```{from sympy import *}
+init_printing()
+
+# Parámetros iniciales
+B = 1      # Precio del bono
+r = 1.01   # Tasa libre de riesgo
+S0 = 19.71 # Precio actual de la acción ON
+K = 25     # Precio de ejercicio
+u = 1.5    # Retorno en el estado bueno
+d = 0.5    # Retorno en el estado malo
+
+# Cálculo de precios de activos
+precio_bono = B
+precio_accion = S0
+
+```
+
+### 
+
+```{#1. ¿Cuál es el precio de los activos no derivados?}
+precio_bono = B
+precio_accion = S0
 
 
-S<- tail(ENELCHILE$close,1) # Precio actual del activo subyacente
-K<- 38 # Precio de ejercicio de la opción
-R<- 0.0642 # Tasa de interés libre de riesgo
-t <- 1 # Tiempo hasta la expiración (en años)
+retorno_bono = r * B
+retorno_accion_bueno = u * S0
+retorno_accion_malo = d * S0
 
-print(paste("El precio de la opción con el Modelo Black and Scholes es ", black_scholes(S, K, t, R, sigma)))
+(retorno_bono, retorno_accion_bueno, retorno_accion_malo)
+```
 
+### 
 
+```{W = Matrix([[-B, -S0], [r * B, u * S0], [r * B, d * S0]])}
+W
+```
+
+```{pi_u, pi_d = symbols('pi_u pi_d')}
+pi = Matrix([[1],[pi_u],[pi_d]])
+pi
+```
+
+```{NA=pi.transpose()*W}
+NA
+```
+
+```{# Solver tutorial}
+# https://docs.sympy.org/latest/modules/solvers/solvers.html
+piNA=solve([NA[0],NA[1]],[pi_u,pi_d],dict=True)
+piNA
 ```
 
 ### Comparación de modelos
 
-Ambos modelos son comúnmente utilizados en las finanzas. Por lo tanto, se puede afirmar que cuentan con respaldo y fundamentos sólidos. Según el artículo de (Ahmad, 2018), los resultados del precio de la opción calculados con ambos modelos muestran una correlación muy cercana a 1, lo que significa que si el precio de la opción aumenta con un modelo, también lo hace con el otro. Sin embargo, esto no implica que ambos modelos proporcionen el mismo precio, como se puede observar en el ejercicio realizado anteriormente.
+1.  **Valor de la Opción (Modelo Binomial)**:
 
-Estos modelos difieren en algunas cosas, tales como:
+    -   Valor calculado: **9.43 USD**
 
--   Precio del activo subyacente: En modelo Black and Scholes sigue una distribución lognormal mientras que el Binomial multiplica el valos $S_0$ con dos opciones ($u$ y $d$)
+    -   Este valor se obtuvo a través del árbol de precios, que muestra cómo evoluciona el precio de la acción en diferentes estados.
 
--   Debido a lo anterior, el modelo de Black and Scholes es continuo y el Binomial discreto.
+    -   Al final captura la posible evolución del precio del activo en varios estados. Recordemos que el modelo binomial permite implementar varios períodos y escenarios. Es por ello, que podría proporcionar una estimación más precisa.
 
--   El modelo BS sirve solo para opciones europeas, mientras que el Binomial también sirve para opciones americanas.
+2.  **Resultados de Black-Scholes**:
 
-También tienen algunas similitudes:
+    -   Valores de retorno de la acción:
 
--   Ambos utilizan el precio actual del activo subyacente.
+        -   En el estado bueno: **29.565 USD**
 
--   Ambos usan la tasa libre de riesgo.
+        -    En el estado malo: **9.855 USD**
 
--   En este caso los dos se usaron para un periodo de tiempo.
+    -   Los retornos dados sugieren que el modelo también dé una variabilidad en el precio de acción.
 
--   Ambos consideran la volatilidad del activo.
+### **Conclusión**
 
-En resumen, el modelo de Black-Scholes constituye una buena herramienta analítica para valorar opciones europeas y supone movimientos continuos en las cotizaciones del mercado. En cambio, el modelo Binomial ofrece mayor flexibilidad al emplear una estructura de árbol que facilita la valoración tanto de opciones europeas como americanas. Elegir uno u otro modelo dependerá del tipo específico de opción que se esté analizando y las inferencias que se quieran hacer en relación a cómo evolucionarán los precios en el mercado financiero.
+-   Se puede apreciar que el modelo binomial arroja un valor de opción de 9.43 USD. Útil para inversores que buscan valoraciones más dinámicas en entornos volátiles.
+
+-   Por último, el de Black-Scholes es mayor o menor que 9.43 USD, dejando abierta la discusión de por qué dicha discrepancia.
+
+-   La comparación muestra que el modelo binomial proporciona un valor de opción de **9.43 USD**, que puede ser útil para inversores que buscan una valoración más dinámica en un entorno volátil.
+
+-   Si el valor calculado por Black-Scholes resulta ser mayor o menor que **9.43 USD**, se puede discutir por qué existe esta discrepancia, considerando factores como la suposición de volatilidad constante en Black-Scholes frente a la flexibilidad del modelo binomial.
 
 # Hito 2 (en revisión):
 
